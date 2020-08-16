@@ -7,7 +7,10 @@ use App\Repository\CartRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={"get","post"},
+ *     itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass=CartRepository::class)
  */
 class Cart
