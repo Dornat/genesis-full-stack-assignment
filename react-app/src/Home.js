@@ -6,12 +6,12 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Nav from 'react-bootstrap/Nav';
+import axios from 'axios';
 
 const Home = () => {
     const [astrologers, setAstrologers] = useState([]);

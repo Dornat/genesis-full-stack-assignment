@@ -7,12 +7,20 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import {Link} from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
+import Modal from "react-bootstrap/Modal";
+import CartForm from "./CartForm";
 
 const Astrologer = () => {
     const {id} = useParams();
     const [astrologer, setAstrologer] = useState(null);
+    const [cartBoxShow, setCartBoxShow] = useState(false);
+    const [serviceInCart, setServiceInCart] = useState(null);
 
-    console.log(id);
+    const handleCartBoxShow = (serviceId) => {
+        setCartBoxShow(true);
+        setServiceInCart(serviceId);
+    };
+    const handleCardBoxClose = () => setCartBoxShow(false);
 
     useEffect(() => {
         const fetchAstrologer = async () => {
@@ -40,7 +48,7 @@ const Astrologer = () => {
                                         <td>{service.name}</td>
                                         <td>{service.price}$</td>
                                         <td>
-                                            <Button>Buy</Button>
+                                            <Button onClick={() => handleCartBoxShow(service.id)}>Buy</Button>
                                         </td>
                                     </tr>
                                 )}
@@ -54,6 +62,16 @@ const Astrologer = () => {
                 </Link>
                 {console.log(astrologer)}
             </Container>
+
+            <Modal show={cartBoxShow} onHide={handleCardBoxClose}>
+                <Modal.Header closeButton>Cart</Modal.Header>
+                <Modal.Body>
+                    <CartForm serviceId={serviceInCart}/>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCardBoxClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };
