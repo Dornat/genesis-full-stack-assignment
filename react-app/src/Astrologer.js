@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router';
-import axios from "axios";
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import CartForm from './CartForm';
 import Container from 'react-bootstrap/Container';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Modal from 'react-bootstrap/Modal';
+import React, {useEffect, useState} from 'react';
 import Table from 'react-bootstrap/Table';
-import {Link} from "react-router-dom";
-import ListGroup from "react-bootstrap/ListGroup";
-import Modal from "react-bootstrap/Modal";
-import CartForm from "./CartForm";
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+import {useParams} from 'react-router';
 
 const Astrologer = () => {
     const {id} = useParams();
@@ -28,7 +28,7 @@ const Astrologer = () => {
             setAstrologer(result.data);
         };
         fetchAstrologer().then();
-    }, []);
+    }, [id]);
 
     return (
         <div>
@@ -60,7 +60,6 @@ const Astrologer = () => {
                 <Link className="btn btn-light mt-3" to="/">
                     Back to Dashboard
                 </Link>
-                {console.log(astrologer)}
             </Container>
 
             <Modal show={cartBoxShow} onHide={handleCardBoxClose}>

@@ -1,17 +1,12 @@
-import React, {useEffect, useState} from 'react';
 import './App.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Nav from 'react-bootstrap/Nav';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const Home = () => {
     const [astrologers, setAstrologers] = useState([]);
