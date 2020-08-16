@@ -1,0 +1,1317 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "",
+        "version": "0.0.0"
+    },
+    "paths": {
+        "/astrologers": {
+            "get": {
+                "tags": [
+                    "Astrologer"
+                ],
+                "operationId": "getAstrologerCollection",
+                "summary": "Retrieves the collection of Astrologer resources.",
+                "responses": {
+                    "200": {
+                        "description": "Astrologer collection response",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "hydra:member": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Astrologer:jsonld-astrologer:read"
+                                            }
+                                        },
+                                        "hydra:totalItems": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "hydra:view": {
+                                            "type": "object",
+                                            "properties": {
+                                                "@id": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "@type": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:first": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "hydra:last": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "hydra:next": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                }
+                                            }
+                                        },
+                                        "hydra:search": {
+                                            "type": "object",
+                                            "properties": {
+                                                "@type": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:template": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:variableRepresentation": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:mapping": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "@type": {
+                                                                "type": "string"
+                                                            },
+                                                            "variable": {
+                                                                "type": "string"
+                                                            },
+                                                            "property": {
+                                                                "type": "string"
+                                                            },
+                                                            "required": {
+                                                                "type": "boolean"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "hydra:member"
+                                    ]
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                    }
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Astrologer"
+                ],
+                "operationId": "postAstrologerCollection",
+                "summary": "Creates a Astrologer resource.",
+                "responses": {
+                    "201": {
+                        "description": "Astrologer resource created",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer:jsonld-astrologer:read"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            }
+                        },
+                        "links": {
+                            "GetAstrologerItem": {
+                                "parameters": {
+                                    "id": "$response.body#/id"
+                                },
+                                "operationId": "getAstrologerItem",
+                                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /astrologers/{id}`."
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Astrologer:jsonld"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Astrologer"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Astrologer"
+                            }
+                        }
+                    },
+                    "description": "The new Astrologer resource"
+                }
+            }
+        },
+        "/astrologers/{id}": {
+            "get": {
+                "tags": [
+                    "Astrologer"
+                ],
+                "operationId": "getAstrologerItem",
+                "summary": "Retrieves a Astrologer resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Astrologer resource response",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer:jsonld-astrologer:read"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Astrologer"
+                ],
+                "operationId": "deleteAstrologerItem",
+                "summary": "Removes the Astrologer resource.",
+                "responses": {
+                    "204": {
+                        "description": "Astrologer resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Astrologer"
+                ],
+                "operationId": "putAstrologerItem",
+                "summary": "Replaces the Astrologer resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Astrologer resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer:jsonld-astrologer:read"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Astrologer:jsonld"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Astrologer"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Astrologer"
+                            }
+                        }
+                    },
+                    "description": "The updated Astrologer resource"
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Astrologer"
+                ],
+                "operationId": "patchAstrologerItem",
+                "summary": "Updates the Astrologer resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Astrologer resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer:jsonld-astrologer:read"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Astrologer-astrologer:read"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/merge-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Astrologer"
+                            }
+                        }
+                    },
+                    "description": "The updated Astrologer resource"
+                }
+            }
+        },
+        "/carts": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "operationId": "getCartCollection",
+                "summary": "Retrieves the collection of Cart resources.",
+                "responses": {
+                    "200": {
+                        "description": "Cart collection response",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "hydra:member": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Cart:jsonld"
+                                            }
+                                        },
+                                        "hydra:totalItems": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "hydra:view": {
+                                            "type": "object",
+                                            "properties": {
+                                                "@id": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "@type": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:first": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "hydra:last": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "hydra:next": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                }
+                                            }
+                                        },
+                                        "hydra:search": {
+                                            "type": "object",
+                                            "properties": {
+                                                "@type": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:template": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:variableRepresentation": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:mapping": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "@type": {
+                                                                "type": "string"
+                                                            },
+                                                            "variable": {
+                                                                "type": "string"
+                                                            },
+                                                            "property": {
+                                                                "type": "string"
+                                                            },
+                                                            "required": {
+                                                                "type": "boolean"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "hydra:member"
+                                    ]
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cart"
+                                    }
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cart"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Cart"
+                ],
+                "operationId": "postCartCollection",
+                "summary": "Creates a Cart resource.",
+                "responses": {
+                    "201": {
+                        "description": "Cart resource created",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cart:jsonld"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cart"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cart"
+                                }
+                            }
+                        },
+                        "links": {
+                            "GetCartItem": {
+                                "parameters": {
+                                    "id": "$response.body#/id"
+                                },
+                                "operationId": "getCartItem",
+                                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /carts/{id}`."
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cart:jsonld"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cart"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cart"
+                            }
+                        }
+                    },
+                    "description": "The new Cart resource"
+                }
+            }
+        },
+        "/carts/{id}": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "operationId": "getCartItem",
+                "summary": "Retrieves a Cart resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cart resource response",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cart:jsonld"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cart"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cart"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            }
+        },
+        "/services": {
+            "get": {
+                "tags": [
+                    "Service"
+                ],
+                "operationId": "getServiceCollection",
+                "summary": "Retrieves the collection of Service resources.",
+                "responses": {
+                    "200": {
+                        "description": "Service collection response",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "hydra:member": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Service:jsonld"
+                                            }
+                                        },
+                                        "hydra:totalItems": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "hydra:view": {
+                                            "type": "object",
+                                            "properties": {
+                                                "@id": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "@type": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:first": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "hydra:last": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                },
+                                                "hydra:next": {
+                                                    "type": "string",
+                                                    "format": "iri-reference"
+                                                }
+                                            }
+                                        },
+                                        "hydra:search": {
+                                            "type": "object",
+                                            "properties": {
+                                                "@type": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:template": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:variableRepresentation": {
+                                                    "type": "string"
+                                                },
+                                                "hydra:mapping": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "@type": {
+                                                                "type": "string"
+                                                            },
+                                                            "variable": {
+                                                                "type": "string"
+                                                            },
+                                                            "property": {
+                                                                "type": "string"
+                                                            },
+                                                            "required": {
+                                                                "type": "boolean"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "hydra:member"
+                                    ]
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Service"
+                                    }
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Service"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "description": "The collection page number",
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Service"
+                ],
+                "operationId": "postServiceCollection",
+                "summary": "Creates a Service resource.",
+                "responses": {
+                    "201": {
+                        "description": "Service resource created",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service:jsonld"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        },
+                        "links": {
+                            "GetServiceItem": {
+                                "parameters": {
+                                    "id": "$response.body#/id"
+                                },
+                                "operationId": "getServiceItem",
+                                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /services/{id}`."
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Service:jsonld"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Service"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Service"
+                            }
+                        }
+                    },
+                    "description": "The new Service resource"
+                }
+            }
+        },
+        "/services/{id}": {
+            "get": {
+                "tags": [
+                    "Service"
+                ],
+                "operationId": "getServiceItem",
+                "summary": "Retrieves a Service resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Service resource response",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service:jsonld"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Service"
+                ],
+                "operationId": "deleteServiceItem",
+                "summary": "Removes the Service resource.",
+                "responses": {
+                    "204": {
+                        "description": "Service resource deleted"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Service"
+                ],
+                "operationId": "putServiceItem",
+                "summary": "Replaces the Service resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Service resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service:jsonld"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Service:jsonld"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Service"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Service"
+                            }
+                        }
+                    },
+                    "description": "The updated Service resource"
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Service"
+                ],
+                "operationId": "patchServiceItem",
+                "summary": "Updates the Service resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Service resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service:jsonld"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "404": {
+                        "description": "Resource not found"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/merge-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Service"
+                            }
+                        }
+                    },
+                    "description": "The updated Service resource"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Astrologer": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "personalInfo": {
+                        "writeOnly": true,
+                        "type": "string"
+                    },
+                    "bio": {
+                        "type": "string"
+                    },
+                    "photo": {
+                        "type": "string"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Service"
+                        }
+                    }
+                }
+            },
+            "Astrologer-astrologer:read": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "personal_info": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "bio": {
+                        "type": "string"
+                    },
+                    "photo": {
+                        "type": "string"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Service-astrologer:read"
+                        }
+                    }
+                }
+            },
+            "Astrologer:jsonld": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "@context": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@id": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@type": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "personalInfo": {
+                        "writeOnly": true,
+                        "type": "string"
+                    },
+                    "bio": {
+                        "type": "string"
+                    },
+                    "photo": {
+                        "type": "string"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Service:jsonld"
+                        }
+                    }
+                }
+            },
+            "Astrologer:jsonld-astrologer:read": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "@context": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@id": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@type": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "personal_info": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "bio": {
+                        "type": "string"
+                    },
+                    "photo": {
+                        "type": "string"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Service:jsonld-astrologer:read"
+                        }
+                    }
+                }
+            },
+            "Cart": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "buyerEmail": {
+                        "type": "string"
+                    },
+                    "buyerName": {
+                        "type": "string"
+                    },
+                    "service": {
+                        "type": "string",
+                        "format": "iri-reference",
+                        "nullable": true
+                    }
+                }
+            },
+            "Cart:jsonld": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "@context": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@id": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@type": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "buyerEmail": {
+                        "type": "string"
+                    },
+                    "buyerName": {
+                        "type": "string"
+                    },
+                    "service": {
+                        "type": "string",
+                        "format": "iri-reference",
+                        "nullable": true
+                    }
+                }
+            },
+            "Service": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "price": {
+                        "type": "integer"
+                    },
+                    "astrologer": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "iri-reference"
+                        }
+                    }
+                }
+            },
+            "Service-astrologer:read": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "price": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "Service:jsonld": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "@context": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@id": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@type": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "price": {
+                        "type": "integer"
+                    },
+                    "astrologer": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "iri-reference"
+                        }
+                    }
+                }
+            },
+            "Service:jsonld-astrologer:read": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "@context": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@id": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "@type": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "price": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}
